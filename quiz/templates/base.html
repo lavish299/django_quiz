@@ -1,4 +1,6 @@
 {% load i18n %}
+{% load static %}
+
 <!DOCTYPE html>
 <html xmlns:fb="http://www.facebook.com/2008/fbml" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
 <head>
@@ -6,9 +8,54 @@
 
 <title>{% trans "Example Quiz Website" %} | {% block title %}{% endblock %}</title>
 <meta name="description" content="{% block description %}{% endblock %}">
+	<!-- META ============================================= -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<meta name="robots" content="" />
+	
+	<!-- DESCRIPTION -->
+	<meta name="description" content="EduChamp : Education HTML" />
+	
+	<!-- OG -->
+	<meta property="og:title" content="EduChamp : Education HTML " />
+	<meta property="og:description" content="EduChamp : Education HTML " />
+	<meta property="og:image" content="" />
+	<meta name="format-detection" content="telephone=no">
+	
+	<!-- FAVICONS ICON ============================================= -->
+	<link rel="icon" href= "{% static 'students/assets/images/favicon.ico' %}" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href= "{% static 'students/assets/images/favicon.png' %}" />
+
+	<!-- PAGE TITLE HERE ============================================= -->
+	<title>EduSpark</title>
+
+	<!-- MOBILE SPECIFIC ============================================= -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--[if lt IE 9]>
+	<script src="{% static 'students/assets/js/html5shiv.min.js' }"></script>
+	<script src="{% static 'students/assets/js/respond.min.js' %}"></script>
+	<![endif]-->
+
+	<!-- All PLUGINS CSS ============================================= -->
+	<link rel="stylesheet" type="text/css" href= "{% static 'students/assets/css/assets.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'students/assets/css/Flip-card.css' %}">
+
+	
+	<!-- TYPOGRAPHY ============================================= -->
+	<link rel="stylesheet" type="text/css" href= "{% static 'students/assets/css/typography.css' %}">
+	
+	<!-- SHORTCODES ============================================= -->
+	<link rel="stylesheet" type="text/css" href= "{% static 'students/assets/css/shortcodes/shortcodes.css' %}">
+	
+	<!-- STYLESHEETS ============================================= -->
+	<link rel="stylesheet" type="text/css" href= "{% static 'students/assets/css/style.css' %}">
+	<link class="skin" rel="stylesheet" type="text/css" href= "{% static 'students/assets/css/color/color-1.css' %}">
 
 <!-- styles -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -17,9 +64,84 @@
 
 </head>
 
-<body>
-
-
+<body id="bg">
+    <div class="page-wraper">
+    <div id="loading-icon-bx"></div>
+    
+        <!-- Header Top ==== -->
+         <header class="header rs-nav">
+            
+            <div class="sticky-header navbar-expand-lg">
+                <div class="menu-bar clearfix">
+                    <div class="container clearfix">
+                        <!-- Header Logo ==== -->
+                        <div class="menu-logo">
+                            <a href="{%url 'home-index' %}"><img src="{% static 'students/assets/images/logo.png' %}"	 alt=""></a>
+                        </div>
+                        
+                     
+                        <!-- Navigation Menu ==== -->
+                        <div class="menu-links navbar-collapse collapse justify-content-start" id="menuDropdown">
+                            <div class="menu-logo">
+                                <a href="{%url 'home-index' %}"><img src="{% static 'students/assets/images/logo.png' %}" alt=""></a>
+                            </div>
+                            <ul class="nav navbar-nav">
+                                <li><a href="{%url 'home-about' %}">About Us<i class="fa fa-chevron-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <li><a href="{%url 'home-about' %}#our-story">About Electrical Department</a>
+                                        </li>
+                                        <li><a href="{%url 'home-about' %}#vision">Vision & Mission</a>
+                                        </li>
+                                        <li><a href="{%url 'home-faculty' %}">Faculty Details</a>
+                                        </li>
+                                        <li><a href="{%url 'home-about' %}#helpline">Helpline</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:;">Curriculum<i class="fa fa-chevron-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <li><a href="{%url 'home-courses' %}">Our Courses</a>
+                                        </li>
+                                        <li><a href="{%url 'home-videos' %}">Video Tutorials</a>
+                                        </li>
+                                        <li><a href="contact-1.html">Test Series</a>
+                                        </li>
+                                        <li><a href="{%url 'home-timetable' %}">Time Table</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{%url 'home-forum' %}">Discussion Forum</a>
+                                </li>
+                               <li><a>Prepbytes<i class="fa fa-chevron-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <li><a href="{%url 'home-interview' %}">Interview Prep</a>
+                                        </li>
+                                        <li><a href="{%url 'home-bonus' %}">Bonus Questions</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="{%url 'home-developers' %}">Developers</a>
+                                </li>
+                                <li><a href="{%url 'home-vlabs' %}">VLabs</a>
+                                </li>
+                            </ul>
+                            <div>
+                                <div>
+                                    <div>
+                                        <div>
+                                            {% if user.is_authenticated %}
+                                            <ul style="margin-left: 190px"><a href="/admin">{{ user.first_name}}</a></ul>
+                                            {% else %}
+                                            <ul style="margin-left: 190px"><a href="{%url 'login' %}">LOGIN</a></ul>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Navigation Menu END ==== -->
+                    </div>
+                </div>
+            </div>
+        </header>
 <!-- Before the quiz content -->
 
 <div class="container">
@@ -29,9 +151,90 @@
 {% endblock %}
 
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<footer>
+	<div class="footer-top">
+		<div class="pt-exebar">
+			<div class="container">
+				<div class="d-flex align-items-stretch">
+				</div>
+			</div>
+		</div>
 
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-12 col-sm-12 footer-col-4">
+				</div>
+				<div class="col-12 col-lg-5 col-md-7 col-sm-12">
+					<div class="row">
+						<div class="col-4 col-lg-4 col-md-4 col-sm-4">
+							<div class="widget footer_widget">
+								<h5 class="footer-title">Company</h5>
+								<ul>
+									<li><a href="{%url 'home-index' %}">Home</a></li>
+									<li><a href="{%url 'home-about' %}">About</a></li>
+									<li><a href="contact-1.html">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-4 col-lg-4 col-md-4 col-sm-4">
+							<div class="widget footer_widget">
+								<h5 class="footer-title">Get In Touch</h5>
+								<ul>
+									<li><a href="blog-classic-grid.html">Blog</a></li>
+									<li><a href="event.html">Events</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-4 col-lg-4 col-md-4 col-sm-4">
+							<div class="widget footer_widget">
+								<h5 class="footer-title">Courses</h5>
+								<ul>
+									<li><a href="courses.html">Courses</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+    <!-- Footer END ==== -->
+    <!-- scroll top button -->
+    <button class="back-to-top fa fa-chevron-up" ></button>
+</div>
+<!-- External JavaScripts -->
+<script src="{% static 'students/assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'students/assets/vendors/bootstrap/js/popper.min.js' %}"></script>
+<script src="{% static 'students/assets/vendors/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'students/assets/vendors/bootstrap-select/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'students/assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js' %}"></script>
+<script src="{% static 'students/assets/vendors/magnific-popup/magnific-popup.js' %}"></script>
+<script src="{% static 'students/assets/vendors/counter/waypoints-min.js' %}"></script>
+<script src="{% static 'students/assets/vendors/counter/counterup.min.js' %}"></script>
+<script src="{% static 'students/assets/vendors/imagesloaded/imagesloaded.js' %}"></script>
+<script src="{% static 'students/assets/vendors/masonry/masonry.js' %}"></script>
+<script src="{% static 'students/assets/vendors/masonry/filter.js' %}"></script>
+<script src="{% static 'students/assets/vendors/owl-carousel/owl.carousel.js' %}"></script>
+<script src="{% static 'students/assets/js/functions.js' %}"></script>
+<script src="{% static 'students/assets/js/contact.js' %}"></script>
+<script src="{% static 'students/assets/vendors/switcher/switcher.js' %}"></script>
+</body>
 <!-- After the quiz content -->
 
 
-</body>
 </html>
